@@ -12,10 +12,10 @@
 
 ## 使い方
 
-* install swift playgrounds on your iPad or Mac
-* download FoodShopHelper.swiftpm from this repository and load to swift playgrouds
-* open FoodShopeHelper and run
-
+* 「swift playgrounds」をiPadまたはMacにインストール
+* このリポジトリから「FoodShopHelper.swiftpm」をダウンロードして、swift playgroudsに読み込ませる
+* FoodShopeHelperを開き、 実行ボタン（▶）をタップする
+  
 ## 機能
 
 チェック済みのものが現在の機能で、チェック無しのものはこれから作りたい機能
