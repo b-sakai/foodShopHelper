@@ -5,10 +5,11 @@ struct ContentView: View {
     enum ViewType {
         case randomRecipeView
         case todayCourseView
-        //case favoriteCourseView
+        case favoriteCourseView
     }
     @State private var currentView: ViewType = .todayCourseView
     @State var todayCourse :[Recipe] = []
+    @StateObject var favoriteCourses = CourseListData()    
     
     var body: some View {
         TabView(selection: $currentView) {
@@ -18,16 +19,22 @@ struct ContentView: View {
                     Label("Random recipe", systemImage: "questionmark")
                 }
                 .tag(ViewType.randomRecipeView)
-            TodayCourseView(todayCourse: $todayCourse)
+            TodayCourseView(todayCourse: $todayCourse, favoriteCourses: favoriteCourses)
                 .tabItem {
                     Label("Today course", systemImage: "list.bullet")
                 }
                 .tag(ViewType.todayCourseView)
-            /*FavoriteCourseView()
+            FavoriteCourseView(todayCourse: $todayCourse, favoriteCourses: favoriteCourses)
                 .tabItem {
                     Label("Favorite", systemImage: "star")
                 }
-                .tag(ViewType.favoriteCourseView)*/
+                .tag(ViewType.favoriteCourseView)
+        }
+        .task {
+            favoriteCourses.load()
+        }
+        .onChange(of: favoriteCourses.courses) { _ in
+            favoriteCourses.save()
         }
     }
 }

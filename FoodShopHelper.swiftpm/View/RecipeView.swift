@@ -16,7 +16,7 @@ struct RecipeView: View {
             LoadableImage(imageMetadata: recipe, cachedImage: $recipeImage, size: $recipeSize)
                 .frame(maxWidth: 180, maxHeight: 100)
             Text("Show detail")
-                .foregroundColor(.blue)
+                .foregroundColor(.accentColor)
                 .onTapGesture {
                     showDetail.toggle()
                 }
